@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electron Chat</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        margin-bottom: 10px;
+      }
+      #chat-output {
+        margin-top: 20px;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+      }
+      input, button {
+        padding: 10px;
+        font-size: 16px;
+      }
+      button {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chat with AI</h1>
+    <form id="chat-form">
+      <input type="text" id="chat-input" placeholder="Say something..." required />
+      <button type="submit">Send</button>
+    </form>
+    <div id="chat-output"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
