@@ -1,0 +1,9 @@
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore Python venv
+venv/
+__pycache__/
+
+# Ignore log files
+*.log
