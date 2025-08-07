@@ -1,0 +1,27 @@
+
+> my-electron-chat@0.0.1 start
+> electron-forge start
+
+[33m>[39m Checking your system
+[33m>[39m Checking package manager version
+[32m√[39m Found npm@10.9.3
+[32m√[39m Checking your system
+[?25h[33m>[39m Locating application
+[32m√[39m Locating application
+[33m>[39m Loading configuration
+[32m√[39m Loading configuration
+[33m>[39m Preparing native dependencies
+[32m√[39m Preparing native dependencies
+[33m>[39m Running generateAssets hook
+[32m√[39m Running generateAssets hook
+[33m>[39m Running preStart hook
+[32m√[39m Running preStart hook
+[32m√[39m Launched Electron app. Type rs in terminal to restart main process.
+[?25h
+
+❌ Failed to load URL file:///N:/Electron%20Project/frontend/frontend/index.html: ERR_FILE_NOT_FOUND (code: -6)
+
+(node:23640) electron: Failed to load URL: file:///N:/Electron%20Project/frontend/frontend/index.html with error: ERR_FILE_NOT_FOUND
+(Use `electron --trace-warnings ...` to show where the warning was created)
+✅ Renderer finished loading: file:///N:/Electron%20Project/frontend/frontend/index.html
+

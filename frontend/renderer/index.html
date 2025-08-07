@@ -1,39 +1,90 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Electron Chat</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        padding: 20px;
-        background-color: #f4f4f4;
-      }
-      h1 {
-        margin-bottom: 10px;
-      }
-      #chat-output {
-        margin-top: 20px;
-        border-top: 1px solid #ccc;
-        padding-top: 10px;
-      }
-      input, button {
-        padding: 10px;
-        font-size: 16px;
-      }
-      button {
-        margin-left: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Chat with AI</h1>
-    <form id="chat-form">
-      <input type="text" id="chat-input" placeholder="Say something..." required />
-      <button type="submit">Send</button>
-    </form>
-    <div id="chat-output"></div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electron Chat App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f0f0f0;
+    }
 
-    <script src="index.js"></script>
-  </body>
+    #chat {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      background: white;
+      margin-bottom: 1rem;
+    }
+
+    .message {
+      margin-bottom: 0.75rem;
+    }
+
+    .user {
+      color: #1a73e8;
+    }
+
+    .assistant {
+      color: #34a853;
+    }
+
+    #input-section {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 0.5rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chat Interface</h1>
+
+  <div id="chat"></div>
+
+  <div id="input-section">
+    <input type="text" id="userInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    const chat = document.getElementById('chat');
+    const userInput = document.getElementById('userInput');
+
+    async function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      appendMessage('User', message, 'user');
+      userInput.value = '';
+
+      const res = await fetch('http://localhost:3000/api/message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })
+      });
+
+      const data = await res.json();
+      appendMessage('Assistant', data.message, 'assistant');
+    }
+
+    function appendMessage(sender, text, className) {
+      const msg = document.createElement('div');
+      msg.classList.add('message', className);
+      msg.textContent = `${sender}: ${text}`;
+      chat.appendChild(msg);
+      chat.scrollTop = chat.scrollHeight; // Auto-scroll
+    }
+  </script>
+</body>
 </html>
